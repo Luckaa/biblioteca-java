@@ -1,6 +1,6 @@
 package biblioteca;
 
-import java.util.*;
+import java.util.ArrayList;
 
 
 public class Livro {
@@ -54,7 +54,7 @@ public class Livro {
 		
 	}
 	public void removerLivro(int i){
-		Livro livro = Livro.getLista().get(i);
+		Livro livro = Livro.getLista().get((i-1));
 		lista.remove((i-1));
 		System.out.println("Removido Livro: " + livro.getTitulo());
 	}
@@ -88,10 +88,16 @@ public class Livro {
 	public void setAno(int ano) {
 		this.ano = ano;
 	}
+	public Livro selecionarLivro(int i){
+		Livro nomeLivroEditar = Livro.getLista().get((i-1));
+		return nomeLivroEditar;
+	}
 	
-	
-	public void editarLivro(Livro livro){
-		
+	public Livro editarLivro(Livro livroEditar,String titulo,String autor,int ano){
+		livroEditar.setTitulo(titulo);
+		livroEditar.setAutor(autor);
+		livroEditar.setAno(ano);
+		return livroEditar;
 	}
 		
 		

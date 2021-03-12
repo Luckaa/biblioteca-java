@@ -1,6 +1,7 @@
 package cliente;
 import java.util.Scanner;
 
+import biblioteca.Livro;
 import usuario.Gerente;
 import utilities.utilities;
 import cliente.InterfaceCliente;
@@ -50,17 +51,45 @@ public class InterfaceGerente extends InterfaceCliente{
 		}
 	}
 	
-	
-	
-	public void editarLivro(){
+	public void editarLivro(Gerente gerente){
+		gerente.listarPraExcluir();
+		System.out.print("Escolha um livro pra editar:");
+		int i = sc.nextInt();
+		Livro livroSelecionado = gerente.selecionarLivro(i);
+		System.out.println("Este é o seu livro");
+		System.out.println("Titulo "+livroSelecionado.getTitulo());
+		System.out.println("Autor "+livroSelecionado.getAutor());
+		System.out.println("Ano " +livroSelecionado.getAno());
+		System.out.println("");
+		System.out.println("Digite um novo titulo");
+		String tituloNovo = sc.nextLine();
+		System.out.println("Digite um novo autor");
+		String autorNovo = sc.nextLine();
+		System.out.println("Digite um novo ano");
+		int anoNovo = sc.nextInt();
 		
+		gerente.editarLivro(livroSelecionado, tituloNovo, autorNovo, anoNovo);
+		
+		System.out.println("Editado com sucesso!");
+
+		
+
+
+
+
+		
+		
+		
+
 	}
-	
 	
 	public void excluirLivro(Gerente gerente, int excluir){
 		if(excluir == 1){
 			gerente.listarPraExcluir();
 			System.out.println("Qual livro você deseja excluir?");
+			int i = sc.nextInt();
+			String livroRemovido = gerente.removerLivro(i);
+			System.out.println("Removido o livro: "+livroRemovido);
 		}
 		if(excluir == 2){
 			gerente.removerTodosLivros();

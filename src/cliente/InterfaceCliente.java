@@ -7,8 +7,11 @@ import utilities.utilities;
 public class InterfaceCliente {	
 	public utilities util = new utilities();
 	public Scanner sc = new Scanner(System.in);
+	private String login;
+	private String senha;
 	
 	public void loopServer(){
+	utilities.clearScreen();
 	int option = this.perguntarLogin();
 	this.logando(option);
 	}
@@ -20,14 +23,17 @@ public class InterfaceCliente {
 		System.out.println("[3]Sair");
 		int optionLogin = 0;
 		optionLogin = sc.nextInt();
+		
 		return optionLogin;
 	}
 
 	
 	public void logando(int option){
-		System.out.println("Por favor digite seu login e senha!");
-		String login = this.digiteSeuLogin();
-		String senha = this.digiteSuaSenha();
+		if(option != 3){
+			System.out.println("Por favor digite seu login e senha!");
+			login = this.digiteSeuLogin();
+			senha = this.digiteSuaSenha();
+		}
 		if(option == 1){
 			System.out.println("a ser feito...");
 		}

@@ -30,7 +30,7 @@ public class Gerente extends Usuario {
 		}
 
 		public String removerLivro(int i){
-			String nomeLivroRemovido = Gerente.getLivrosAdicionados().get(i).getAutor();
+			String nomeLivroRemovido = Gerente.getLivrosAdicionados().get((i-1)).getAutor();
 			livro.removerLivro(i);
 			return nomeLivroRemovido;
 		}
@@ -40,8 +40,13 @@ public class Gerente extends Usuario {
 		public void listarPraExcluir(){
 			super.livro.listarLivrosComId();
 		}
+		public Livro selecionarLivro(int i){
+			Livro nomeLivroEditar = Livro.getLista().get((i-1));
+			return nomeLivroEditar;
+		}
 		
-		public void editarLivro(Livro livro){
+		public void editarLivro(Livro nomeLivroEditar, String titulo, String autor, int ano){
+			nomeLivroEditar.editarLivro(nomeLivroEditar, titulo, autor, ano);
 			
 		}
 
